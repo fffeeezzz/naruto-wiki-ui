@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Наруто Вики</title>
+    <meta name="keywords" content="Наруто, Аниме, Круто, Итачи, Манга, Хогаке">
+    <meta name="description" content="Наруто Вики - сайт с информацией из вселенной Наруто">
+    <!--    <link rel="stylesheet" href="./ui/utils/outline-prototype-safe.css">-->
+</head>
+<body>
+<header>
+    <div>
+        <img src="./assets/images/logo.png" alt="Logo" style="width: 50px; height: 50px">
+    </div>
+    <nav>
+        <ul>
+            <li>Вселенная</li>
+            <li>
+                <ul>
+                    <li>Страны</li>
+                    <li>Деревни</li>
+                    <li>Ниндзя</li>
+                    <li>Оружие</li>
+                </ul>
+            </li>
+        </ul>
+        <ul>
+            <li>Персонажи</li>
+            <li>
+                <ul>
+                    <li>Шиноби</li>
+                    <li>Кланы</li>
+                    <li>Команды</li>
+                </ul>
+            </li>
+        </ul>
+        <ol>
+            <li>1</li>
+            <li>2</li>
+            <li>3 хватит</li>
+        </ol>
+    </nav>
+    <div>
+        <i>Войти</i>
+        <i>Регистрация</i>
+    </div>
+</header>
+
+<main>
+    <div>
+        <section>
+            <pre>
+                &#10084; &#36;
+                Text in a pre element
+                is displayed in a fixed-width
+                font, and it preserves
+                both      spaces and
+                line breaks
+            </pre>
+        </section>
+        <section>
+            <p>Вот это небольшой кусок кода из моего sql билдера:
+                <code>
+                    package sqlb
+
+                    import (
+                    "bytes"
+                    "fmt"
+                    )
+
+                    type PlaceholderFormat uint8
+
+                    const (
+                    Dollar = iota + 1
+                    Question
+                    )
+
+                    var formats = []string{
+                    "unknown",
+                    "dollar",
+                    "question",
+                    }
+
+                    func (format PlaceholderFormat) String() string {
+                    if int(format) >= len(formats) {
+                    return formats[0]
+                    }
+
+                    return formats[format]
+                    }
+
+                    type Placeholder interface {
+                    ReplacePlaceholders(sql string) (string, error)
+                    }
+
+                    func NewPlaceholder(format PlaceholderFormat) Placeholder {
+                    switch format {
+                    case Dollar:
+                    return dollarFormat{}
+                    case Question:
+                    return questionFormat{}
+                    }
+
+                    return nil
+                    }
+
+                    type dollarFormat struct{}
+
+                    func (f dollarFormat) format() string { return "$" }
+
+                    func (f dollarFormat) ReplacePlaceholders(sql string) (string, error) {
+                    return replaceFormatPlaceholders(sql, f.format())
+                    }
+
+                    type questionFormat struct{}
+
+                    func (f questionFormat) format() string { return "?" }
+
+                    func (f questionFormat) ReplacePlaceholders(sql string) (string, error) {
+                    return sql, nil
+                    }
+
+                    func replaceFormatPlaceholders(sql, format string) (string, error) {
+                    if sql == "" {
+                    return "", nil
+                    }
+                    if format == "" {
+                    return "", errEmptyPlaceholderFormat
+                    }
+
+                    in := bytes.NewBufferString(sql)
+                    out := bytes.Buffer{}
+
+                    i := 1
+                    for {
+                    r, _, err := in.ReadRune()
+                    if err != nil {
+                    break
+                    }
+
+                    if r == '?' {
+                    out.WriteString(fmt.Sprintf("%s%d", format, i))
+                    i++
+                    continue
+                    }
+
+                    out.WriteRune(r)
+                    }
+
+                    return out.String(), nil
+                    }
+                </code>
+            </p>
+        </section>
+
+        <section>
+            <blockquote cite="http://www.world.org/zenit/index.html"> Зенит — это наивысшая для наблюдателя точка на
+                небосклоне
+                в вертикальном направлении, которую, как известно,
+                можно легко определить с помощью вертикального отвеса.
+            </blockquote>
+
+            <p>Как сказал А. А. Милн, <q>некоторые люди говорят с животными.</q>
+            <p>
+        </section>
+
+        <section>
+            <p>x<sup>2</sup> + y <sup>2</sup> = 4</p>
+            <p>x<sub>2</sub> + y <sub>2</sub> = хз что</p>
+        </section>
+        <section>
+            <h2 align="center">Добро пожаловать на Наруто Вики!</h2>
+            <p>
+                <strong>Наруто Вики</strong> - сайт, в котором собрана информация из вселенной,
+                посвященной японским комиксам и их анимациям
+                <a style="text-decoration: none" href="https://ru.wikipedia.org/wiki/Наруто" target="_blank">
+                    манге и аниме Наруто</a>.
+            </p>
+            <p>Помимо изучения вселенной, Наруто Вики - вики, которую может редактировать каждый.</p>
+        </section>
+
+        <section>
+            <h2 align="center">Содержание</h2>
+            <ul>
+                <li><a href="#" style="text-decoration: none">Шиноби</a></li>
+                <li><a href="#" style="text-decoration: none">Кланы</a></li>
+                <li><a href="#" style="text-decoration: none">Команды</a></li>
+                <li><a href="#" style="text-decoration: none">Деревни</a></li>
+                <li><a href="#" style="text-decoration: none">Страны</a></li>
+                <li><a href="#" style="text-decoration: none">Техники</a></li>
+                <li><a href="#" style="text-decoration: none">Оружие</a></li>
+            </ul>
+        </section>
+    </div>
+</main>
+
+
+<footer>
+    <div>
+        <section>
+            <img src="./assets/images/logo.png" alt="Logo" style="width: 50px; height: 50px">
+        </section>
+        <section>
+            <h3>Ресурсы</h3>
+            <ul>
+                <li>
+                    <a href="https://jut.su/naruuto/" style="text-decoration: none">Jut.su</a>
+                </li>
+                <li>
+                    <a href="https://ru.wikipedia.org/wiki/%D0%9D%D0%B0%D1%80%D1%83%D1%82%D0%BE"
+                       style="text-decoration: none" target="_blank">Википедия</a>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h3>Социальные сети</h3>
+            <ul>
+                <li><a href="#" style="text-decoration: none">VK</a></li>
+            </ul>
+        </section>
+    </div>
+</footer>
+</body>
+</html>
