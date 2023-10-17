@@ -1,0 +1,437 @@
+* {
+    font-family: Georgia, monospace;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 700px;
+    font-size: 13px;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: #ffd199;
+}
+
+html {
+    min-width: 700px;
+    font-size: 13px;
+    height: 100dvh;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: #ffd199;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* По ТЗ лабы 2 */
+h3 {
+    font-size: large;
+}
+
+/* По ТЗ лабы 2 */
+p {
+    font-size: medium;
+}
+
+/* скроллбар */
+::-webkit-scrollbar {
+    background: rgba(0, 0, 0, 0);
+    width: 8px;
+    height: 8px;
+}
+
+/* ползунок */
+::-webkit-scrollbar-thumb {
+    background: #f08e0987;
+    -webkit-border-radius: 1ex;
+    -webkit-box-shadow: none;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #f08e09;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: #f08e09;
+}
+
+/* трек */
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+/* уголок */
+::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0);
+}
+
+
+main, footer {
+    width: 100%;
+}
+
+main {
+    background: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    flex-shrink: 0;
+    display: flex;
+    padding: 3rem;
+    row-gap: 2rem;
+}
+
+footer {
+    background: #bb552a;
+    min-height: 150px;
+    height: -webkit-fill-available;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+#social-links, #resources {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+#resources a {
+    color: #ffffff;
+}
+
+#resources a:hover {
+    color: #feffd2;
+}
+
+/* По ТЗ лабы 2 */
+#resources > nav {
+    line-height: 1.5rem;
+}
+
+#social-links a {
+    color: #ffffff;
+}
+
+#social-links a:hover {
+    color: #feffd2;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    background-position: 50%;
+    background-size: cover;
+    background-image: url("./assets/images/header.png");
+    background-repeat: no-repeat;
+    position: sticky;
+    padding: 10px;
+}
+
+header:before {
+    background-image: linear-gradient(to bottom, rgba(255, 191, 153, 0) 25%, #ffd199);
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 160px;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+
+a {
+    text-decoration: none;
+    color: #f06e38;
+    /* По ТЗ лабы 2 */
+    font-size: medium;
+}
+
+a:hover {
+    color: #f24e0a;
+    border-bottom: 1px dotted #f24e0a;
+}
+
+.header-auth {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    justify-content: end;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    column-gap: 10px;
+    font-size: 1.2rem;
+}
+
+.header-auth #sign-in {
+    border-radius: 5px;
+    border: 2px solid #000000;
+    padding: 5px 10px;
+    color: #000000;
+}
+
+.header-auth #register {
+    border: 2px solid #f08e09;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: #f08e09;
+    color: white;
+}
+
+.header-nav {
+    display: flex;
+    width: 100%;
+    height: calc(60px - 40px);
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    column-gap: 3rem;
+}
+
+.header-nav__logo {
+    display: flex;
+    align-items: center;
+    width: 144px;
+    height: 100%;
+    justify-content: center;
+}
+
+.header-nav__links {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: calc(100% - 144px);
+    column-gap: 10px;
+}
+
+.header-nav__links > ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.dropdown {
+    position: relative;
+    cursor: pointer;
+    background: #ffffffd6;
+    border-bottom: 1px solid #ffffffd6;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding: 3px 10px !important;
+}
+
+.dropdown:hover {
+    border-color: #f08e09;
+}
+
+.dropdown > li {
+    font-size: 1.5rem;
+}
+
+.dropdown-content {
+    list-style-type: none;
+    display: none;
+    position: absolute;
+    min-width: 5rem;
+    width: 100%;
+    transition: all 1s ease;
+    top: calc(1.5rem + 10px);
+    left: 0;
+    background: #ffffffd6;
+    cursor: pointer;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.dropdown-content ul {
+    text-decoration: none;
+    list-style-type: none;
+    width: 100%;
+    padding-inline: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #f08e09;
+    background: #f08e091a;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.dropdown-content ul li:hover {
+    background: #f08e09;
+}
+
+/* По ТЗ лабы 2 */
+.dropdown-content ul li {
+    text-indent: 10px;
+}
+
+.dropdown-content ul li:last-child {
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#page {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    scrollbar-gutter: stable;
+    height: calc(100% - 100px);
+}
+
+#page-inner {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+h1 {
+    width: 100%;
+    font-size: 2rem;
+}
+
+section {
+    width: 100%;
+}
+
+#content-categories {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.page-box-content {
+    background: #f2f2f2;
+    border: 1px solid #cecece;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.page-box-content-title {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background: #f08e09;
+    border-bottom: 1px solid black;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    font-size: 1.5rem;
+    height: 2em;
+    /* По ТЗ лабы 2 */
+    filter: drop-shadow(0 0 0.75rem #f08e09);
+}
+
+.page-box-content-inner {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2em;
+}
+
+/* По ТЗ лабы 2 */
+.page-box-content-inner > p > a {
+    font-weight: 550;
+    font-style: italic;
+    word-spacing: -0.2ch;
+    letter-spacing: 0.1rem;
+}
+
+table {
+    border: 1px solid #000000;
+    width: auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+thead,
+tbody,
+tr {
+    display: contents;
+    border-left: 1px solid #000000;
+}
+
+table td {
+    border: 1px solid #000000;
+    text-align: center;
+}
+
+
+tr:nth-child(2n - 1) td {
+    background-color: #f06e38;
+}
+
+#for-nothing-container {
+    container-name: table-data;
+    container-type: inline-size;
+}
+
+@container table-data (max-width: 1000px) {
+    table {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    td:nth-child(2) {
+        display: none;
+    }
+
+    th:nth-child(2) {
+        display: none;
+    }
+}
+
+@container table-data (max-width: 700px) {
+    table {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    td:nth-child(3) {
+        display: none;
+    }
+
+    th:nth-child(3) {
+        display: none;
+    }
+}
