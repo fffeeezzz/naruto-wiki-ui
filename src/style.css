@@ -1,5 +1,13 @@
+@font-face {
+    font-family: 'MyFont';
+    src: url('./assets/fonts/Lora-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 * {
-    font-family: Georgia, monospace;
+    font-family: 'MyFont', Georgia, monospace;
     margin: 0;
     padding: 0;
     border: 0;
@@ -11,7 +19,6 @@
 
 body {
     min-width: 700px;
-    font-size: 13px;
     height: 100%;
     width: 100%;
     padding: 0;
@@ -373,6 +380,8 @@ section {
 
 /* По ТЗ лабы 2 */
 .page-box-content-inner > p > a {
+    /* Фикс лаба 2 */
+    text-transform: capitalize;
     font-weight: 550;
     font-style: italic;
     word-spacing: -0.2ch;
@@ -381,7 +390,8 @@ section {
 
 table {
     border: 1px solid #000000;
-    width: auto;
+    /*Фикс лаба 3*/
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
 }
@@ -393,9 +403,16 @@ tr {
     border-left: 1px solid #000000;
 }
 
+/*Фикс лаба 3*/
+table th {
+    padding: 8px;
+}
+
 table td {
     border: 1px solid #000000;
     text-align: center;
+    /*Фикс лаба 3*/
+    padding: 8px;
 }
 
 
