@@ -1,12 +1,10 @@
-const { pathname } = document.location
+const {pathname} = document.location;
 
-const universeUl = document.querySelector('#universe')
-const charactersUl = document.querySelector('#characters')
+const ulElements = document.querySelectorAll('.dropdown');
 
-if (pathname.includes('universe.html')) {
-    universeUl.style.background = '#f08e09'
-    universeUl.style.borderBottom = '1px solid #f08e09'
-} else if (pathname.includes('characters.html')) {
-    charactersUl.style.background = '#f08e09'
-    charactersUl.style.borderBottom = '1px solid #f08e09'
-}
+ulElements.forEach(ul => {
+    const {href} = ul.dataset;
+    if (pathname.includes(href)) {
+        ul.classList.add('ul-link');
+    }
+})
