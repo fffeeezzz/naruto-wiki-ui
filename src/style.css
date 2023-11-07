@@ -175,10 +175,6 @@ a {
     font-size: medium;
 }
 
-a:hover {
-    color: #f24e0a;
-    border-bottom: 1px dotted #f24e0a;
-}
 
 .header-auth {
     display: flex;
@@ -258,6 +254,12 @@ a:hover {
 
 .dropdown > li {
     font-size: 1.5rem;
+
+    > a {
+        font-size: 1.5rem;
+        color: #000000;
+        text-decoration: none;
+    }
 }
 
 .dropdown-content {
@@ -336,7 +338,7 @@ section {
     width: 100%;
 }
 
-#content-categories {
+.content-categories {
     display: flex;
     justify-content: space-between;
     width: 100%;
