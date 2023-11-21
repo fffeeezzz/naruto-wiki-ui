@@ -52,6 +52,12 @@ p {
     font-size: medium;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 /* скроллбар */
 ::-webkit-scrollbar {
     background: rgba(0, 0, 0, 0);
@@ -393,6 +399,92 @@ section {
     font-style: italic;
     word-spacing: -0.2ch;
     letter-spacing: 0.1rem;
+}
+
+.survey-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & label {
+        font-size: 16px;
+        font-weight: 600;
+    }
+}
+
+.survey-form-inputs {
+    display: flex;
+    gap: 150px;
+
+    & input {
+        text-align: center;
+        border: 1px solid #f06e38;
+        height: 34px;
+        font-size: 15px;
+    }
+}
+
+.survey-form > button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    font-weight: 600;
+    background: #f06e38;
+    color: #ffffff;
+    cursor: pointer;
+    height: 46px;
+    width: 150px;
+    font-size: 13px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 16px;
+    gap: 16px;
+}
+
+.card-lock {
+    position: absolute;
+    top: 22px;
+    left: 8px;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 8px;
+    height: 70px;
+    border: 2px solid #f06e38;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+
+    &[data-checked] {
+        border-color: forestgreen;
+
+        > a {
+            color: forestgreen;
+        }
+    }
+
+    .card-buttons {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+
+        > button {
+            & :hover {
+                cursor: pointer;
+            };
+        }
+    }
 }
 
 table {

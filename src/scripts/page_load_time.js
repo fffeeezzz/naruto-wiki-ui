@@ -2,7 +2,7 @@
     const startTime = Date.now();
     window.addEventListener("load", () => {
         const endTime = Date.now();
-        const timeElement = document.getElementById("page-load-time");
+        const timeElement = document.getElementById("page-load-time")
         timeElement.innerText = `${
             endTime - startTime
         } ms`;
