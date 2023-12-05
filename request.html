@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="src/style.css">
     <script defer src="src/scripts/logo_gif.js"></script>
     <script defer src="src/scripts/active-page.js"></script>
-    <script defer src="src/scripts/localStorage.js"></script>
+    <script defer src="src/scripts/request.js"></script>
 </head>
 <body>
 <header>
@@ -59,49 +59,37 @@
 <section id="page">
     <div id="page-inner">
         <main>
-            <h1>Шаблон</h1>
+            <h1>Запрос</h1>
             <section class="page-box-content">
                 <h2 class="page-box-content-title">Добро пожаловать на Наруто Вики!</h2>
                 <section class="page-box-content-inner">
-                    <img id="main-logo" src="https://gifdb.com/images/high/sasuke-s-chidori-vs-naruto-s-rasengan-ep73c8yqb7xbrak2.gif">
+                    <img id="main-logo" src="https://gifdb.com/images/high/naruto-shippuden-young-naruto-and-sasuke-epflr57mad1xog71.gif">
                     <p>
-                        жесткая заруба
+                        кенты
                     </p>
                 </section>
             </section>
 
             <section class="page-box-content">
-                <h2 class="page-box-content-title">Какие серии какого сезона надо посмотреть сегодня:</h2>
+                <h2 class="page-box-content-title">Кидаем запросик</h2>
                 <section class="page-box-content-inner">
-                    <form action="" class="survey-form">
-                        <div class="survey-form-inputs">
-                            <div>
-                                <label for="season">Введите сезон: </label>
-                                <input class="survey-form-input" id="season" type="number" required />
-                            </div>
-                            <div>
-                                <label for="series">Введите серию: </label>
-                                <input class="survey-form-input" id="series" type="number" required />
-                            </div>
-                        </div>
-                        <button id="survey-form-button" class="styled-button" type="submit">Подтвердить выбор!</button>
-                        <div>
-                            <label for="flag">Запомнить мой выбор</label>
-                            <input id="flag" class="form-flag" type="checkbox" />
-                        </div>
-                    </form>
-                    <div class="cards-container"></div>
-                    <template id="buttons-template">
-                        <div class="card-buttons">
-                            <button>
-                                <img src="src/assets/icons/delete.svg" alt="delete">
-                            </button>
-                            <button>
-                                <img src="src/assets/icons/remove.svg" alt="check">
-                            </button>
-                        </div>
-                    </template>
+                   <button class="styled-button request-button">
+                       <img src="src/assets/icons/request.svg" alt="loading">
+                   </button>
+                    <div class="comments"></div>
                 </section>
+
+                <template id="comment-template">
+                    <div class="comment">
+                        <img alt="avatar" src="">
+                        <div class="comment-info">
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <span id="comment-body"></span>
+                        <span id="post-id"></span>
+                    </div>
+                </template>
             </section>
         </main>
 

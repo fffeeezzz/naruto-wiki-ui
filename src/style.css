@@ -424,7 +424,7 @@ section {
     }
 }
 
-.survey-form > button {
+.styled-button {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -485,6 +485,69 @@ section {
             };
         }
     }
+}
+
+.request-button {
+    border-radius: 8px;
+
+    & img {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.comments {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.comment {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid #f08e09;
+    background: #ffffff;
+    width: 100%;
+    height: 80px;
+    border-radius: 8px;
+    padding: 8px 16px;
+
+    & img {
+        width: 50px;
+        height: 50px;
+        border-radius: 28px;
+    }
+
+    & span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    #post-id {
+        margin-left: auto;
+        min-width: 70px;
+        font-weight: 600;
+
+        @media screen and (max-device-width: 810px) {
+            visibility: hidden;
+        }
+    }
+}
+
+.comment-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 430px;
+    width: 430px;
+    font-weight: 600;
 }
 
 table {
