@@ -72,14 +72,9 @@ const createCardButtons = (object) => {
     const objectId = object.id;
     const isChecked = object.isChecked;
 
-    const buttons = document.createElement('div');
-    buttons.classList.add('card-buttons');
+    const cardButtons = buttonsTemplate.content.cloneNode(true);
 
-    const deleteButton = document.createElement('button');
-    const deleteImg = document.createElement('img');
-    deleteImg.setAttribute('src', 'src/assets/icons/delete.svg');
-    deleteImg.setAttribute('alt', 'delete');
-    deleteButton.appendChild(deleteImg);
+    const [deleteButton, checkButton] = cardButtons.querySelectorAll('button');
     deleteButton.addEventListener('click', () => {
         document.querySelector(`#card${objectId}`).remove(); // удаление из DOM-дерева
         const currentData = getLSData();
@@ -87,11 +82,8 @@ const createCardButtons = (object) => {
         setLSData(filteredData);
     })
 
-    const checkButton = document.createElement('button');
-    const checkImg = document.createElement('img');
+    const checkImg = checkButton.querySelector('img');
     checkImg.setAttribute('src', isChecked ? 'src/assets/icons/remove.svg' : 'src/assets/icons/confirm.svg');
-    checkImg.setAttribute('alt', 'checked');
-    checkButton.appendChild(checkImg);
     checkButton.setAttribute('data-action', isChecked ? 'remove' : 'confirm');
     checkButton.addEventListener('click', (event) => {
         if (event.currentTarget.dataset.action === 'confirm') {
@@ -111,9 +103,7 @@ const createCardButtons = (object) => {
         handleSetIsChecked(objectId);
     })
 
-    buttons.append(deleteButton, checkButton);
-
-    return buttons;
+    return cardButtons;
 
 }
 
@@ -164,6 +154,7 @@ const surveyForm = document.querySelector('.survey-form');
 const surveyFormInputs = document.querySelectorAll('.survey-form-input');
 const surveyFormCheckbox = document.querySelector('.form-flag');
 const cardsContainer = document.querySelector('.cards-container');
+const buttonsTemplate = document.querySelector('#buttons-template');
 surveyForm.onsubmit = (event) => {
     event.preventDefault(); // чтобы убрать дефолтную перезагрузку страницы
     const [season, series] = Array.from(surveyFormInputs.values()).map(input => Number(input.value));
