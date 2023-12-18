@@ -10,9 +10,11 @@
     <meta content="width" name="MobileOptimized"/>
     <meta content="yes" name="apple-mobile-web-app-capable"/>
     <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simptip@1.0.4/simptip.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet"/>
     <script defer src="src/scripts/logo_gif.js"></script>
     <script defer src="src/scripts/active-page.js"></script>
-    <script defer src="src/scripts/localStorage.js"></script>
+    <script defer type="module" src="src/scripts/localStorage.js"></script>
 </head>
 <body>
 <header>
@@ -63,7 +65,8 @@
             <section class="page-box-content">
                 <h2 class="page-box-content-title">Добро пожаловать на Наруто Вики!</h2>
                 <section class="page-box-content-inner">
-                    <img id="main-logo" src="https://gifdb.com/images/high/sasuke-s-chidori-vs-naruto-s-rasengan-ep73c8yqb7xbrak2.gif">
+                    <img id="main-logo"
+                         src="https://gifdb.com/images/high/sasuke-s-chidori-vs-naruto-s-rasengan-ep73c8yqb7xbrak2.gif">
                     <p>
                         жесткая заруба
                     </p>
@@ -80,14 +83,20 @@
                                 <input class="survey-form-input" id="season" type="number" required />
                             </div>
                             <div>
-                                <label for="series">Введите серию: </label>
-                                <input class="survey-form-input" id="series" type="number" required />
+                                <span class='half-arrow simptip-position-bottom simptip-warning simptip-fade simptip-smooth simptip-multiline'
+                                      data-tooltip="Доступные серии: 1 сезон - с 1 по 220; 2 сезон - с 1 по 500; 3 сезон - с 1 по 293">
+                                     <label id="series-label" for="series">Введите серию: </label>
+                                 </span>
+                                <input class="survey-form-input" id="series" type="number" required/>
                             </div>
                         </div>
                         <button id="survey-form-button" class="styled-button" type="submit">Подтвердить выбор!</button>
                         <div>
-                            <label for="flag">Запомнить мой выбор</label>
-                            <input id="flag" class="form-flag" type="checkbox" />
+                             <span class='half-arrow simptip-position-bottom simptip-warning simptip-fade simptip-smooth simptip-multiline'
+                                   data-tooltip="Значение сохранится в local storage и будет доступно после перезагрузки страницы">
+                                 <label id="flag-label" for="flag">Запомнить мой выбор</label>
+                             </span>
+                            <input id="flag" class="form-flag" type="checkbox"/>
                         </div>
                     </form>
                     <div class="cards-container"></div>
