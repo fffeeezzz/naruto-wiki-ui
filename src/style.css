@@ -449,9 +449,9 @@ section {
 }
 
 .card-lock {
-    position: absolute;
+    position: absolute !important;
     top: 22px;
-    left: 8px;
+    left: 22px;
 }
 
 .card {

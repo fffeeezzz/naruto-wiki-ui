@@ -1,3 +1,13 @@
+import toastr from 'https://cdn.jsdelivr.net/npm/toastr@2.1.4/+esm';
+
+toastr.options = {
+    "closeButton": true, // есть кнопка для закрытия уведомления
+    "newestOnTop": true, // новые уведомления появляются выше
+    "positionClass": "toast-bottom-left", // позиция уведомления на экране
+    "timeOut": "2000", // время жизни уведомления
+    "extendedTimeOut": "500", // время жизни уведомления после клика на него
+}
+
 const FIRST_SEASON = 1;
 const LAST_SEASON = 3;
 const KEY = 'NARUTO_CARDS';
@@ -8,6 +18,23 @@ const SERIES_NUMBER = {
     3: 293,
 }
 
+const BASE_TOOLTIP_CLASSES = [
+    'half-arrow', // стрелочка у тултипа
+    'simptip-position-bottom', // позиция тултипа
+    'simptip-warning', // тип тултипа
+    'simptip-fade', // красивый эффект затухания
+    'simptip-smooth' // закругленный бордер
+]
+
+const handleError = message => {
+    toastr.error(message);
+}
+
+/**
+ * Метод для получения id карточки
+ * @param str - строка '{сезон}{серия}'
+ * @returns {number} - хеш
+ */
 const getHash = str => {
     let hash = 0;
     for (let i = 0, len = str.length; i < len; i++) {
@@ -119,13 +146,14 @@ const renderObjectCard = (object) => {
 
     const currentData = getLSData();
     if (currentData.find(item => item.id === object.id)) {
-        const lockContainer = document.createElement('div');
+        const hintSpan = document.createElement('span');
         const lockImg = document.createElement('img');
         lockImg.setAttribute('src', 'src/assets/icons/lock.svg');
         lockImg.setAttribute('alt', 'lock');
-        lockContainer.classList.add('card-lock');
-        lockContainer.appendChild(lockImg);
-        card.appendChild(lockContainer);
+        hintSpan.classList.add(...BASE_TOOLTIP_CLASSES, 'card-lock');
+        hintSpan.setAttribute('data-tooltip', 'Выбор сохранен в LS') // текст тултипа
+        hintSpan.appendChild(lockImg);
+        card.appendChild(hintSpan);
     }
 
     const season = document.createElement('span');
@@ -164,10 +192,10 @@ surveyForm.onsubmit = (event) => {
     const isUnique = getIsUnique(objectId);
 
     if (!isValid) {
-        alert('Проверьте правильность введенных данных!');
+        handleError('Проверьте правильность введенных данных!');
         return;
     } else if (!isUnique) {
-        alert('Карточка с данными параметрами уже была добавлена!');
+        handleError('Карточка с данными параметрами уже была добавлена!');
         return;
     }
 

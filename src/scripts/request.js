@@ -1,3 +1,5 @@
+import toastr from 'https://cdn.jsdelivr.net/npm/toastr@2.1.4/+esm';
+
 const URL = 'https://jsonplaceholder.typicode.com';
 
 const POSTS_MAX_ID = 100;
@@ -9,8 +11,25 @@ const REQUEST_SRC = 'src/assets/icons/request.svg';
 const AVATAR_MIN = 1;
 const AVATAR_MAX = 26;
 
+toastr.options = {
+    "closeButton": true, // есть кнопка для закрытия уведомления
+    "newestOnTop": true, // новые уведомления появляются выше
+    "progressBar": true, // внизу уведомления есть прогрессбар
+    "positionClass": "toast-bottom-left", // позиция уведомления на экране
+    "timeOut": "3000", // время жизни уведомления
+    "extendedTimeOut": "0", // время жизни уведомления после клика на него
+}
+
 const getRandomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min) + min);
+}
+
+const handleSuccess = () => {
+    toastr.success('Комментарии успешно загружены!');
+}
+
+const handleError = () => {
+    toastr.error('Во время выполнения запроса произошла ошибка. Попробуйте еще раз...')
 }
 
 const renderCommentCard = (comment) => {
@@ -41,12 +60,13 @@ requestButton.addEventListener('click', () => {
     fetch(`${URL}/comments?postId=${randPostId}`).then(
         value => value.json()
             .then(data => {
+                handleSuccess();
                 data.map(renderCommentCard);
                 img.src = REQUEST_SRC;
             }),
         () => {
+            handleError();
             img.src = REQUEST_SRC;
-            alert('Произошла ошибка! Попробуйте еще раз');
         }
     )
 })
