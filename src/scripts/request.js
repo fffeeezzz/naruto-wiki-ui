@@ -1,6 +1,6 @@
 import toastr from 'https://cdn.jsdelivr.net/npm/toastr@2.1.4/+esm';
 
-const URL = 'https://jsonplaceholder.typicode.com';
+const URL = 'https://naruto-wiki.onrender.com';
 
 const POSTS_MAX_ID = 100;
 const POSTS_MIN_ID = 1;
@@ -57,16 +57,29 @@ requestButton.addEventListener('click', () => {
     img.src = SPINNER_SRC;
 
     const randPostId = getRandomInt(POSTS_MIN_ID, POSTS_MAX_ID);
-    fetch(`${URL}/comments?postId=${randPostId}`).then(
-        value => value.json()
-            .then(data => {
-                handleSuccess();
-                data.map(renderCommentCard);
-                img.src = REQUEST_SRC;
-            }),
+    let responseTime = 0
+    fetch(`${URL}/api/comments?postId=${randPostId}`).then(
+        response => {
+            responseTime = response.headers.get('Response-Time');
+            return response.json();
+        }
+    ).then(
+        data => {
+            handleSuccess()
+            const startTime = Date.now();
+            data.map(renderCommentCard)
+            img.src = REQUEST_SRC
+            const renderTime = Date.now() - startTime
+
+            const timeElement = document.getElementById("page-load-time")
+            timeElement.innerText = `Render time - ${renderTime} ms, Response time- ${responseTime} ms`;
+            timeElement.style.color = '#FFFFFF';
+            document.getElementById("load-time").style.textAlign = 'center';
+        }
+    ).catch(
         () => {
             handleError();
-            img.src = REQUEST_SRC;
+            img.src = REQUEST_SRC
         }
-    )
+    );
 })
