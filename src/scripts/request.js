@@ -60,7 +60,7 @@ requestButton.addEventListener('click', () => {
     let responseTime = 0
     fetch(`${URL}/api/comments?postId=${randPostId}`).then(
         response => {
-            responseTime = response.headers.get('Response-Time');
+            responseTime = response.headers.get('X-Response-Time');
             return response.json();
         }
     ).then(
