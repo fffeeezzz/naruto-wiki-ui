@@ -32,6 +32,14 @@ const handleError = () => {
     toastr.error('Во время выполнения запроса произошла ошибка. Попробуйте еще раз...')
 }
 
+const handleSuccessStats = () => {
+    toastr.success('Количество шиноби в кланах изменилось');
+}
+
+const handleErrorStats = () => {
+    toastr.error('Иди смотри логи, все сломалось')
+}
+
 const renderCommentCard = (comment) => {
     const template = document.querySelector('#comment-template');
     const commentClone = template.content.cloneNode(true);
@@ -50,9 +58,36 @@ const renderCommentCard = (comment) => {
 
 }
 
+const socket = io('https://naruto-wiki.onrender.com');
+socket.on('connect', function() {
+    console.log('Connected');
+
+    socket.emit('events', { test: 'test' });
+    socket.emit('identity', 0, response =>
+        console.log('Identity:', response),
+    );
+});
+socket.on('events', function(data) {
+    console.log('event', data);
+});
+socket.on('shinobi_stats_event', function(data) {
+    let randPostId = getRandomInt(POSTS_MIN_ID, POSTS_MAX_ID);
+    if (randPostId % 2 === 0) {
+        handleSuccessStats()
+        return
+    }
+
+    handleErrorStats()
+});
+socket.on('disconnect', function() {
+    console.log('Disconnected');
+});
+
 const requestButton = document.querySelector('.request-button');
 const commentsContainer = document.querySelector('.comments');
 requestButton.addEventListener('click', () => {
+    socket.emit('shinobi_changed_event', "hello from client");
+
     const img = requestButton.querySelector('img');
     img.src = SPINNER_SRC;
 
@@ -60,6 +95,10 @@ requestButton.addEventListener('click', () => {
     let responseTime = 0
     fetch(`${URL}/api/comments?postId=${randPostId}`).then(
         response => {
+            if (response.status >= 300) {
+                throw new Error()
+            }
+
             responseTime = response.headers.get('X-Response-Time');
             return response.json();
         }
